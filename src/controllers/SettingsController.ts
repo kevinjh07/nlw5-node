@@ -1,20 +1,20 @@
 import { Request, Response } from 'express';
-import { getCustomRepository } from 'typeorm';
-import { SettingsRepository } from '../repositories/SettingsRepiository';
+import { SettingsService } from '../services/SettingsService';
+
+const CREATED = 201;
+const UNPROCESSABLE_ENTITY = 422;
 
 export class SettingsController {
   async create(request: Request, response: Response) {
+    const settingsService = new SettingsService();
+
     const { chat, username } = request.body;
 
-    const settingsRepository = getCustomRepository(SettingsRepository);
-
-    const settings = settingsRepository.create({
-      chat,
-      username,
-    });
-
-    await settingsRepository.save(settings);
-
-    return response.status(201).json(settings);
+    try {
+      const settings = await settingsService.create(chat, username);
+      return response.status(CREATED).json(settings);
+    } catch (error) {
+      return response.status(UNPROCESSABLE_ENTITY).json({ message: error.message });
+    }
   }
 }
