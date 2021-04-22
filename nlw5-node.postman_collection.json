@@ -30,6 +30,88 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "POST Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"teste@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Messages",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Olá tudo bem? o que está acontecendo?\",\n    \"user_id\": \"cb4a7183-e09c-4800-9f54-f54c7b8ea604\",\n    \"admin_id\": \"a54a3151-7838-4cd4-8b88-f226b368733b\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/messages",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Messages/id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Olá tudo bem? o que está acontecendo?\",\n    \"user_id\": \"cb4a7183-e09c-4800-9f54-f54c7b8ea604\",\n    \"admin_id\": \"a54a3151-7838-4cd4-8b88-f226b368733b\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/messages/cb4a7183-e09c-4800-9f54-f54c7b8ea604",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"messages",
+						"cb4a7183-e09c-4800-9f54-f54c7b8ea604"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
